@@ -1,0 +1,1371 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12382d">
+<title>Али & Хаафиза | Үйлөнүү үлпөтү</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green:#12382d;
+  --dark:#08251e;
+  --gold:#c9aa72;
+  --cream:#faf6ed;
+  --white:#fffdf8;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:auto;
+}
+
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--green);
+  font-family:"Manrope",sans-serif;
+  overflow-x:hidden;
+}
+
+body.lock {
+  overflow:hidden;
+}
+
+button,input,select {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+section {
+  padding:85px 22px;
+}
+
+.wrap {
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+}
+
+h1,h2,.serif {
+  font-family:"Cormorant Garamond",serif;
+}
+
+h2 {
+  font-size:clamp(48px,11vw,78px);
+  font-weight:600;
+  line-height:1.05;
+  margin:18px 0;
+}
+
+p {
+  line-height:1.95;
+}
+
+.gold-label {
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--gold);
+  font-weight:800;
+}
+
+.line {
+  width:85px;
+  height:1px;
+  background:var(--gold);
+  margin:28px auto;
+}
+
+.flower {
+  color:var(--gold);
+  font-size:32px;
+  margin:20px 0;
+}
+
+/* КОНВЕРТ */
+
+#cover {
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  background:
+    linear-gradient(#09271fe0,#09271ff2),
+    url("IMG_3907.jpeg") center/cover;
+  transition:opacity 1s,visibility 1s;
+}
+
+#cover.hidden {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.cover-box {
+  width:min(100%,410px);
+  text-align:center;
+}
+
+.cover-top {
+  color:#ead7af;
+  font-size:12px;
+  letter-spacing:4px;
+  font-weight:800;
+  margin-bottom:35px;
+}
+
+#envelope {
+  position:relative;
+  display:block;
+  width:100%;
+  height:245px;
+  border:0;
+  background:#f5ecda;
+  box-shadow:0 25px 80px #0007;
+  perspective:900px;
+}
+
+#envelope::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(35deg,#e6dac4 49%,transparent 50%)
+    left bottom/51% 100% no-repeat,
+    linear-gradient(-35deg,#f8f0e1 49%,transparent 50%)
+    right bottom/51% 100% no-repeat;
+}
+
+.flap {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:60%;
+  z-index:5;
+  background:linear-gradient(135deg,#fffaf0,#ddd0b7);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform 1s;
+}
+
+#envelope.open .flap {
+  transform:rotateX(180deg);
+}
+
+.envelope-names {
+  position:absolute;
+  top:45px;
+  left:0;
+  width:100%;
+  z-index:7;
+  color:var(--green);
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(40px,10vw,58px);
+  font-weight:700;
+}
+
+.seal {
+  position:absolute;
+  z-index:8;
+  top:125px;
+  left:50%;
+  transform:translateX(-50%);
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 25% 20%,#eed8a1,#ad8849 65%,#795923);
+  border:3px double #f7e7c0;
+  color:white;
+  font-family:Georgia,serif;
+  font-size:23px;
+  transition:opacity .5s;
+}
+
+#envelope.open .seal {
+  opacity:0;
+}
+
+.cover-hint {
+  color:white;
+  margin-top:32px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:2;
+}
+
+/* САЙТ */
+
+#site {
+  opacity:0;
+  transition:opacity 1s;
+}
+
+#site.visible {
+  opacity:1;
+}
+
+/* БАШКЫ БӨЛҮК */
+
+.hero {
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  padding:0;
+  background:url("IMG_3579.jpeg") center/cover;
+}
+
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    transparent 10%,
+    #061a1540 45%,
+    #061a16ef 100%
+  );
+}
+
+.hero-content {
+  position:relative;
+  width:100%;
+  padding:60px 20px 75px;
+  text-align:center;
+  color:white;
+}
+
+.hero h1 {
+  font-size:clamp(67px,16vw,116px);
+  line-height:.9;
+  font-weight:600;
+  margin:28px 0;
+}
+
+.hero h1 span {
+  display:block;
+  color:#ead4a5;
+  font-style:italic;
+  font-size:.7em;
+}
+
+.hero-date {
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:4px;
+}
+
+.hero-quote {
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
+  margin-top:22px;
+}
+
+/* ЧАКЫРУУ */
+
+.invitation {
+  background:var(--cream);
+}
+
+.invitation-text {
+  font-size:clamp(17px,4.5vw,21px);
+  font-weight:600;
+  line-height:2.1;
+  margin:32px auto;
+}
+
+.invitation-text strong {
+  color:#997844;
+}
+
+.quote {
+  font-family:"Cormorant Garamond",serif;
+  font-size:34px;
+  font-weight:600;
+}
+
+/* СҮРӨТТӨР */
+
+.photo-section {
+  background:var(--green);
+  padding:55px 20px;
+}
+
+.photo-frame {
+  max-width:590px;
+  margin:auto;
+  padding:9px;
+  border:1px solid var(--gold);
+}
+
+.photo-frame img {
+  width:100%;
+  max-height:750px;
+  object-fit:cover;
+  display:block;
+}
+
+.photo-caption {
+  text-align:center;
+  color:#e7d0a2;
+  font-family:"Cormorant Garamond",serif;
+  font-size:35px;
+  margin-top:28px;
+}
+
+/* ДАТА */
+
+.date-section {
+  background:var(--white);
+}
+
+.date-main {
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.time-main {
+  font-family:"Cormorant Garamond",serif;
+  font-size:75px;
+  font-weight:700;
+  color:var(--gold);
+}
+
+.calendar {
+  max-width:450px;
+  margin:35px auto 0;
+  padding:25px 15px;
+  background:var(--cream);
+  border:1px solid #d8c6a3;
+}
+
+.month {
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:22px;
+}
+
+.calendar-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
+
+.calendar-grid div {
+  min-height:39px;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  position:relative;
+}
+
+.calendar-grid .weekday {
+  color:#ac8b53;
+  font-size:12px;
+  font-weight:800;
+}
+
+.calendar-grid .selected {
+  color:white;
+  z-index:1;
+}
+
+.calendar-grid .selected::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:39px;
+  height:39px;
+  background:var(--green);
+  border:2px solid var(--gold);
+  border-radius:50%;
+}
+
+.calendar-bottom {
+  margin-top:22px;
+  color:#ad8950;
+  font-size:13px;
+  font-weight:800;
+}
+
+/* ТАЙМЕР */
+
+.countdown-section {
+  background:
+    linear-gradient(#0a3027e0,#0a3027e9),
+    url("IMG_3907.jpeg") center/cover;
+  color:white;
+  min-height:530px;
+  display:flex;
+  align-items:center;
+}
+
+.countdown-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:45px;
+  border-top:1px solid var(--gold);
+  border-bottom:1px solid var(--gold);
+}
+
+.countdown-item {
+  padding:20px 3px;
+  border-right:1px solid #ffffff40;
+}
+
+.countdown-item:last-child {
+  border:0;
+}
+
+.countdown-item strong {
+  display:block;
+  color:#e8d1a3;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(36px,9vw,65px);
+}
+
+.countdown-item small {
+  font-size:10px;
+  font-weight:800;
+}
+
+/* ДАРЕК */
+
+.location-section {
+  background:var(--cream);
+}
+
+.venue {
+  font-family:"Cormorant Garamond",serif;
+  font-size:47px;
+  font-weight:700;
+}
+
+.address {
+  font-size:18px;
+  font-weight:700;
+}
+
+.map-button,
+.submit-button {
+  display:inline-block;
+  padding:19px 27px;
+  background:var(--green);
+  border:1px solid var(--gold);
+  color:white;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-top:25px;
+}
+
+/* КОНОКТУН ЖООБУ */
+
+.rsvp-section {
+  background:var(--white);
+}
+
+.rsvp-section p {
+  font-size:17px;
+  font-weight:600;
+}
+
+form {
+  max-width:500px;
+  margin:35px auto 0;
+  text-align:left;
+}
+
+.field-label {
+  display:block;
+  margin:24px 0 10px;
+  font-size:15px;
+  font-weight:800;
+}
+
+input[type="text"],
+select {
+  display:block;
+  width:100%;
+  padding:17px;
+  border:1px solid #c8b99c;
+  border-radius:0;
+  background:var(--cream);
+  font-size:16px;
+}
+
+.radio-label {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:17px 0;
+  font-weight:700;
+}
+
+.radio-label input {
+  width:19px;
+  height:19px;
+  accent-color:var(--green);
+}
+
+.submit-button {
+  width:100%;
+}
+
+.form-note {
+  color:#69716b;
+  font-size:12px!important;
+}
+
+/* АКЫРКЫ БӨЛҮК */
+
+.final-section {
+  background:var(--green);
+  color:white;
+  padding-bottom:0;
+}
+
+.hosts {
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(56px,12vw,85px);
+  color:#ead4a5;
+  font-weight:700;
+  margin:25px 0;
+}
+
+.final-text {
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:55px;
+}
+
+.final-photo {
+  max-width:650px;
+  margin:auto;
+  border-top:5px solid var(--gold);
+}
+
+.final-photo img {
+  display:block;
+  width:100%;
+}
+
+footer {
+  background:var(--dark);
+  color:#ead4a5;
+  text-align:center;
+  padding:27px 15px;
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:800;
+}
+
+/* МУЗЫКА ЖАНА ЖЫЛУУ БАШКАРУУСУ */
+
+#controls {
+  position:fixed;
+  z-index:900;
+  right:16px;
+  bottom:24px;
+  display:none;
+  flex-direction:column;
+  gap:12px;
+}
+
+.control-button {
+  width:57px;
+  height:57px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  background:var(--green);
+  color:#ead4a5;
+  font-size:23px;
+  box-shadow:0 8px 25px #0005;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .9s,transform .9s;
+}
+
+.reveal.show {
+  opacity:1;
+  transform:none;
+}
+
+@media(max-width:480px) {
+  section {
+    padding:72px 20px;
+  }
+
+  .photo-section {
+    padding:45px 18px;
+  }
+
+  .final-section {
+    padding-bottom:0;
+  }
+
+  #envelope {
+    height:225px;
+  }
+
+  .seal {
+    top:110px;
+  }
+
+  .envelope-names {
+    top:43px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .reveal {
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body class="lock">
+
+<!-- АЧЫЛУУЧУ КОНВЕРТ -->
+
+<div id="cover">
+  <div class="cover-box">
+
+    <div class="cover-top">
+      WEDDING INVITATION
+    </div>
+
+    <button id="envelope" aria-label="Чакыруу катты ачуу">
+      <div class="flap"></div>
+      <div class="envelope-names">Али & Хаафиза</div>
+      <div class="seal">A&H</div>
+    </button>
+
+    <div class="cover-hint">
+      ЧАКЫРУУ КАТТЫ АЧУУ ҮЧҮН БАСЫҢЫЗ
+      <div>✧ ♡ ✧</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- МУЗЫКА: GITHUB'ДАГЫ NASHEED.MP3 -->
+
+<audio id="music" loop preload="auto">
+  <source src="Nasheed.mp3" type="audio/mpeg">
+</audio>
+
+<!-- БАШКАРУУ БАСКЫЧТАРЫ -->
+
+<div id="controls">
+  <button id="scrollBtn" class="control-button"
+    aria-label="Жылууну токтотуу">❚❚</button>
+
+  <button id="musicBtn" class="control-button"
+    aria-label="Музыканы башкаруу">♫</button>
+</div>
+
+<main id="site">
+
+<!-- 1. БАШКЫ СҮРӨТ -->
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="gold-label">
+      БИЗДИН ҮЙЛӨНҮҮ ҮЛПӨТҮБҮЗ
+    </div>
+
+    <h1>
+      Али
+      <span>&</span>
+      Хаафиза
+    </h1>
+
+    <div class="hero-date">
+      30 • 10 • 2026
+    </div>
+
+    <div class="hero-quote">
+      Эки жүрөк — бир тагдыр
+    </div>
+
+  </div>
+</section>
+
+<!-- 2. ЧАКЫРУУ ТЕКСТИ -->
+
+<section class="invitation">
+  <div class="wrap reveal">
+
+    <div class="gold-label">WITH LOVE</div>
+
+    <h2>
+      Урматтуу<br>
+      коноктор!
+    </h2>
+
+    <div class="flower">❦</div>
+
+    <p class="invitation-text">
+      Сиздерди балдарыбыз
+      <strong>Али менен Хаафизанын</strong>
+      үйлөнүү үлпөт тоюна арналган
+      салтанаттуу кечебизге чакырабыз.
+      <br><br>
+      Тойго келип, кубанычыбызды
+      биз менен бөлүшүп,
+      кадырлуу коногубуз болуп кетиңиздер!
+    </p>
+
+    <div class="line"></div>
+
+    <div class="quote">
+      Сүйүү — эки жүрөктүн бир жолу
+    </div>
+
+  </div>
+</section>
+
+<!-- 3. СҮРӨТ -->
+
+<section class="photo-section">
+  <div class="reveal">
+
+    <div class="photo-frame">
+      <img src="IMG_3909.jpeg"
+           alt="Али менен Хаафиза"
+           loading="lazy">
+    </div>
+
+    <div class="photo-caption">
+      Forever & Always
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. ТОЙ КҮНҮ -->
+
+<section class="date-section">
+  <div class="wrap reveal">
+
+    <div class="gold-label">SAVE THE DATE</div>
+
+    <h2>Той күнү</h2>
+
+    <div class="line"></div>
+
+    <div class="date-main">
+      30-ОКТЯБРЬ, 2026-ЖЫЛ
+    </div>
+
+    <div class="time-main">17:00</div>
+
+    <div class="calendar">
+
+      <div class="month">
+        ОКТЯБРЬ 2026
+      </div>
+
+      <div class="calendar-grid">
+
+        <div class="weekday">Дш</div>
+        <div class="weekday">Шш</div>
+        <div class="weekday">Шр</div>
+        <div class="weekday">Бш</div>
+        <div class="weekday">Жм</div>
+        <div class="weekday">Иш</div>
+        <div class="weekday">Жк</div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+        <div>22</div>
+        <div>23</div>
+        <div>24</div>
+        <div>25</div>
+
+        <div>26</div>
+        <div>27</div>
+        <div>28</div>
+        <div>29</div>
+        <div class="selected">30</div>
+        <div>31</div>
+
+      </div>
+
+      <div class="calendar-bottom">
+        ♡ БИЗДИН ӨЗГӨЧӨ КҮН ♡
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- 5. КАЛГАН УБАКЫТ -->
+
+<section class="countdown-section">
+  <div class="wrap reveal">
+
+    <div class="gold-label">
+      COUNTING DOWN
+    </div>
+
+    <h2>Тойго чейин</h2>
+
+    <div class="countdown-grid">
+
+      <div class="countdown-item">
+        <strong id="days">00</strong>
+        <small>КҮН</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="hours">00</strong>
+        <small>СААТ</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="minutes">00</strong>
+        <small>МҮНӨТ</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="seconds">00</strong>
+        <small>СЕКУНД</small>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- 6. ТОЙДУН ДАРЕГИ -->
+
+<section class="location-section">
+  <div class="wrap reveal">
+
+    <div class="gold-label">
+      THE LOCATION
+    </div>
+
+    <h2>Дарегибиз</h2>
+
+    <div class="flower">✧</div>
+
+    <div class="venue">
+      Банкеттик зал «Аврора»
+    </div>
+
+    <p class="address">
+      Бишкек шаары<br>
+      Ибраимова көчөсү, 2/2
+    </p>
+
+    <a class="map-button"
+       target="_blank"
+       rel="noopener noreferrer"
+       href="https://www.google.com/maps/search/?api=1&amp;query=Аврора+Ибраимова+2%2F2+Бишкек">
+      КАРТАДАН КӨРҮҮ ↗
+    </a>
+
+  </div>
+</section>
+
+<!-- 7. КОНОКТОРДУН ЖООБУ -->
+
+<section class="rsvp-section" id="rsvp">
+  <div class="wrap reveal">
+
+    <div class="gold-label">RSVP</div>
+
+    <h2>
+      Тойго<br>
+      келесизби?
+    </h2>
+
+    <div class="line"></div>
+
+    <p>
+      Кубанычтуу күнүбүздө сиздерди
+      көрүүгө абдан кубанычта болобуз!
+    </p>
+
+    <form id="rsvpForm">
+
+      <label class="field-label" for="guestName">
+        Аты-жөнүңүз
+      </label>
+
+      <input id="guestName"
+             type="text"
+             placeholder="Аты-жөнүңүз"
+             required>
+
+      <label class="field-label">
+        Тойго катышасызбы?
+      </label>
+
+      <label class="radio-label">
+        <input type="radio"
+               name="attendance"
+               value="Ооба, барам"
+               required>
+        Ооба, сөзсүз барам
+      </label>
+
+      <label class="radio-label">
+        <input type="radio"
+               name="attendance"
+               value="Бара албайм">
+        Тилекке каршы, бара албайм
+      </label>
+
+      <label class="field-label" for="guestCount">
+        Канча адам келесиздер?
+      </label>
+
+      <select id="guestCount">
+        <option value="1">1 адам</option>
+        <option value="2">2 адам</option>
+        <option value="3">3 адам</option>
+        <option value="4">4 адам</option>
+        <option value="5">5 адам</option>
+        <option value="6">6 адам</option>
+        <option value="7">7 адам</option>
+        <option value="8">8 адам</option>
+        <option value="9">9 адам</option>
+        <option value="10">10 адам</option>
+      </select>
+
+      <button class="submit-button" type="submit">
+        WHATSAPP АРКЫЛУУ ЖӨНӨТҮҮ ↗
+      </button>
+
+      <p class="form-note">
+        Жоопту жөнөтүү үчүн WhatsApp'тан
+        алуучуну тандап, билдирүүнү жөнөтөсүз.
+      </p>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- 8. АКЫРКЫ СӨЗ -->
+
+<section class="final-section">
+  <div class="wrap reveal">
+
+    <div class="gold-label">
+      WITH LOVE & GRATITUDE
+    </div>
+
+    <h2>
+      Сиздерди<br>
+      күтөбүз!
+    </h2>
+
+    <div class="flower">❦</div>
+
+    <p>
+      Сиздерди терең урматтоо менен,<br>
+      той ээлери:
+    </p>
+
+    <div class="hosts">
+      Алтын & Айнура
+    </div>
+
+    <p class="final-text">
+      Тойго келип, ак батаңызды берип,
+      кубанычыбызды биз менен бөлүшүп,
+      кадырлуу коногубуз болуп кетиңиздер!
+    </p>
+
+  </div>
+
+  <div class="final-photo">
+    <img src="IMG_3907.jpeg"
+         alt="Үйлөнүү үлпөтү"
+         loading="lazy">
+  </div>
+
+</section>
+
+<footer>
+  АЛИ & ХААФИЗА • 30.10.2026
+</footer>
+
+</main>
+
+<script>
+
+/* НЕГИЗГИ ЭЛЕМЕНТТЕР */
+
+const cover = document.getElementById("cover");
+const envelope = document.getElementById("envelope");
+const site = document.getElementById("site");
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+const scrollBtn = document.getElementById("scrollBtn");
+const controls = document.getElementById("controls");
+
+const rsvp = document.getElementById("rsvp");
+
+let opened = false;
+let auto = false;
+let frame = null;
+let last = null;
+
+/* ЖЫЛУУ ЫЛДАМДЫГЫ */
+
+const SPEED = 45;
+
+/* МУЗЫКА */
+
+function musicState() {
+  const playing = !music.paused;
+
+  musicBtn.textContent = playing ? "♫" : "♪";
+
+  musicBtn.setAttribute(
+    "aria-label",
+    playing ? "Музыканы токтотуу" : "Музыканы ойнотуу"
+  );
+}
+
+function startMusic() {
+  music.volume = 0.8;
+
+  const result = music.play();
+
+  if (result && typeof result.catch === "function") {
+    result
+      .then(musicState)
+      .catch(function(error) {
+        console.log("Музыка ойной алган жок:", error);
+        musicState();
+      });
+  }
+}
+
+music.addEventListener("play", musicState);
+music.addEventListener("pause", musicState);
+
+music.addEventListener("error", function() {
+  musicBtn.textContent = "!";
+  musicBtn.title = "Nasheed.mp3 файлын текшериңиз";
+});
+
+/* АВТОМАТТЫК ЖЫЛУУ */
+
+function buttonState() {
+  scrollBtn.textContent = auto ? "❚❚" : "▶";
+}
+
+function stopScroll() {
+  auto = false;
+  last = null;
+
+  if (frame !== null) {
+    cancelAnimationFrame(frame);
+  }
+
+  frame = null;
+  buttonState();
+}
+
+function scrollFrame(time) {
+  if (!auto) return;
+
+  if (last === null) {
+    last = time;
+  }
+
+  const dt = Math.min((time - last) / 1000, 0.1);
+  last = time;
+
+  const rsvpTop = rsvp.getBoundingClientRect().top;
+
+  const bottom =
+    document.documentElement.scrollHeight - innerHeight;
+
+  if (
+    rsvpTop <= innerHeight * 0.65 ||
+    scrollY >= bottom - 1
+  ) {
+    stopScroll();
+    return;
+  }
+
+  window.scrollBy(0, SPEED * dt);
+
+  frame = requestAnimationFrame(scrollFrame);
+}
+
+function startScroll() {
+  if (!opened || auto) return;
+
+  if (
+    rsvp.getBoundingClientRect().top <=
+    innerHeight * 0.65
+  ) {
+    return;
+  }
+
+  auto = true;
+  last = null;
+
+  buttonState();
+
+  frame = requestAnimationFrame(scrollFrame);
+}
+
+/* КОНВЕРТТИ АЧУУ */
+
+envelope.addEventListener("click", function() {
+  if (opened) return;
+
+  opened = true;
+
+  envelope.classList.add("open");
+
+  /* Конок баскан учурда музыка башталат */
+  startMusic();
+
+  setTimeout(function() {
+
+    cover.classList.add("hidden");
+    site.classList.add("visible");
+
+    document.body.classList.remove("lock");
+
+    controls.style.display = "flex";
+
+    musicState();
+    initReveal();
+
+    /* Эки секунддан кийин сайт өзү жылат */
+    setTimeout(startScroll, 2000);
+
+  }, 1100);
+});
+
+/* МУЗЫКА БАСКЫЧЫ */
+
+musicBtn.addEventListener("click", function() {
+  if (music.paused) {
+    startMusic();
+  } else {
+    music.pause();
+  }
+});
+
+/* ЖЫЛУУ БАСКЫЧЫ */
+
+scrollBtn.addEventListener("click", function() {
+  if (auto) {
+    stopScroll();
+  } else {
+    startScroll();
+  }
+});
+
+/* КОНОК ӨЗҮ ЖЫЛДЫРСА, АВТОЖЫЛУУ ТОКТОЙТ */
+
+document.addEventListener("touchstart", function(event) {
+  if (!opened || !auto) return;
+
+  if (event.target.closest("#controls")) return;
+
+  stopScroll();
+}, { passive:true });
+
+document.addEventListener("wheel", function() {
+  if (auto) stopScroll();
+}, { passive:true });
+
+document.addEventListener("keydown", function(event) {
+  const keys = [
+    "ArrowDown",
+    "ArrowUp",
+    "PageDown",
+    "PageUp",
+    " ",
+    "Home",
+    "End"
+  ];
+
+  if (auto && keys.includes(event.key)) {
+    stopScroll();
+  }
+});
+
+/* ТОЙГО ЧЕЙИНКИ ТАЙМЕР */
+
+const weddingDate =
+  new Date("2026-10-30T17:00:00+06:00").getTime();
+
+function countdown() {
+
+  const diff = Math.max(
+    0,
+    weddingDate - Date.now()
+  );
+
+  const days = Math.floor(diff / 86400000);
+
+  const hours =
+    Math.floor(diff / 3600000) % 24;
+
+  const minutes =
+    Math.floor(diff / 60000) % 60;
+
+  const seconds =
+    Math.floor(diff / 1000) % 60;
+
+  document.getElementById("days").textContent =
+    days;
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2,"0");
+}
+
+countdown();
+
+setInterval(countdown,1000);
+
+/* WHATSAPP АРКЫЛУУ ЖООП */
+
+document.getElementById("rsvpForm")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    stopScroll();
+
+    const name =
+      document.getElementById("guestName").value.trim();
+
+    const attendance =
+      document.querySelector(
+        'input[name="attendance"]:checked'
+      );
+
+    const count =
+      document.getElementById("guestCount").value;
+
+    if (!name || !attendance) return;
+
+    const message =
+      "Саламатсыздарбы! 🤍\n\n" +
+      "Али & Хаафизанын тоюна жооп:\n" +
+      "Аты-жөнүм: " + name + "\n" +
+      "Катышуум: " + attendance.value + "\n" +
+      "Адам саны: " + count + "\n\n" +
+      "Рахмат!";
+
+    window.location.href =
+      "https://api.whatsapp.com/send?text=" +
+      encodeURIComponent(message);
+
+  });
+
+/* ЖУМШАК АНИМАЦИЯ */
+
+const observer = new IntersectionObserver(
+  function(entries) {
+
+    entries.forEach(function(entry) {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("show");
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+  {
+    threshold:0.1
+  }
+);
+
+function initReveal() {
+
+  document.querySelectorAll(".reveal")
+    .forEach(function(element) {
+
+      observer.observe(element);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
